@@ -57,7 +57,7 @@ let temperature = [ ];
 let minTemperature = [ ];
 let maxTemperature = [ ];
 
-//TODO: Make a variable with a graph in it
+//Make a variable with a graph in it
 const config = {
     type: 'line',
     data: {
