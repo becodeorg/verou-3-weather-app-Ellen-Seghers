@@ -12,6 +12,7 @@
      * grab the weather information, based on the location provided by the input field and display it in the html
      * @param event the key up event that was triggered
      */
+    //On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days
     function getLocationInformation(event){
         if(event.key == "Enter"){
             console.log(inputField)
@@ -21,34 +22,34 @@
         }
     }
 
-//On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days
-    //loop over array and display weather for each timestamp
-    function createWeatherGraph(weatherData){
-        //create for loop that loops over data
-        for(let i = 0; i < weatherData.length; i++){
-            console.log(weatherData[i]);
-            //extract date, minimum temperature, maximum temperature and temperature
-            console.log("Temp: "+weatherData[i].main.temp);
-            console.log("Temp-min: " +weatherData[i].main.temp_min);
-            console.log("Date:" +weatherData[i].dt_txt);
-            console.log("Temp-max" +weatherData[i].main.temp_max);
-            console.log("Wind-speed" +weatherData[i].wind.speed);
-            //Add a paragraph element to your html
-            const paragraph = document.createElement("p");
-            document.body.append(paragraph);
-            //add text to your paragraph element
-            let paragraphText = "";
-            paragraphText+= "Date: " +weatherData[i].dt_txt + "<span class=\"tab\"></span>";
-            paragraphText+= "Temperature: " + weatherData[i].main.temp + "°C" + "<span class=\"tab\"></span>";
-            paragraphText+= "Minimum Temperature: " + weatherData[i].main.temp_min + "°C" + "<span class=\"tab\"></span>";
-            paragraphText+= "Maximum Temperature: " + weatherData[i].main.temp_max + "°C" + "<span class=\"tab\"></span>";
-            paragraphText+= "Wind Speed: " + weatherData[i].wind.speed + "m/s";
-            paragraph.innerHTML = paragraphText;
-            //TODO: (In for loop) push the data for every object in the arrays
-
-
-        }
+/**
+ *
+ * @param weatherData
+ */
+//loop over array and display weather for each timestamp
+function createWeatherGraph(weatherData){
+    //create for loop that loops over data
+    for(let i = 0; i < weatherData.length; i++){
+        console.log(weatherData[i]);
+        //Add a paragraph element to your html
+        const paragraph = document.createElement("p");
+        document.body.append(paragraph);
+        //add text to your paragraph element
+        let paragraphText = "";
+        paragraphText+= "Date: " +weatherData[i].dt_txt + "<span class=\"tab\"></span>";
+        paragraphText+= "Temperature: " + weatherData[i].main.temp + "°C" + "<span class=\"tab\"></span>";
+        paragraphText+= "Minimum Temperature: " + weatherData[i].main.temp_min + "°C" + "<span class=\"tab\"></span>";
+        paragraphText+= "Maximum Temperature: " + weatherData[i].main.temp_max + "°C" + "<span class=\"tab\"></span>";
+        paragraphText+= "Wind Speed: " + weatherData[i].wind.speed + "m/s";
+        paragraph.innerHTML = paragraphText;
+        //push the data for every object in the arrays
+        date.push(weatherData[i].dt_txt);
+        temperature.push(weatherData[i].main.temp);
+        minTemperature.push(weatherData[i].main.temp_min);
+        maxTemperature.push(weatherData[i].main.temp_max);
     }
+    showsGraphic();
+}
 
 //Make 4 array's (1 for date, 1 for temperature, 1 for min temperature, 1 for max temperature)
 let date = [ ];
@@ -56,9 +57,36 @@ let temperature = [ ];
 let minTemperature = [ ];
 let maxTemperature = [ ];
 
+//TODO: Make a variable with a graph in it
+const config = {
+    type: 'line',
+    data: {
+        labels: date,
+        datasets: [{
+            label: "Temperature",
+            backgroundColor: 'rgb(255, 255, 26)',
+            borderColor: 'rgb(255, 255, 26)',
+            data: temperature,
+        },{
+            label: "Min. Temperature",
+            backgroundColor: 'rgb(77, 195, 255)',
+            borderColor: 'rgb(77, 195, 255)',
+            data: minTemperature,
+        },{
+            label: "Max. Temperature",
+            backgroundColor: 'rgb(255, 64, 0)',
+            borderColor: 'rgb(255, 64, 0)',
+            data: maxTemperature,
+        }]
+    },
+    options: {}
+};
+function showsGraphic (){
+    let myChart = new Chart(
+        document.getElementById("graphic"),
+        config
+    );
+}
 
-//TODO: Make a canvas element with an id in a div (html or js)
-
-//TODO: Make a variable
 
 
