@@ -23,25 +23,19 @@
     }
 
 /**
- *
- * @param weatherData
+ * Grab the necessary data from the weather data object and put in arrays.
+ * @param weatherData (object) Weather data from location.
  */
 //loop over array and display weather for each timestamp
 function createWeatherGraph(weatherData){
+    //Clear the arrays
+    date = [];
+    temperature = [];
+    minTemperature = [];
+    maxTemperature = [];
     //create for loop that loops over data
     for(let i = 0; i < weatherData.length; i++){
         console.log(weatherData[i]);
-        //Add a paragraph element to your html
-        const paragraph = document.createElement("p");
-        document.body.append(paragraph);
-        //add text to your paragraph element
-        let paragraphText = "";
-        paragraphText+= "Date: " +weatherData[i].dt_txt + "<span class=\"tab\"></span>";
-        paragraphText+= "Temperature: " + weatherData[i].main.temp + "°C" + "<span class=\"tab\"></span>";
-        paragraphText+= "Minimum Temperature: " + weatherData[i].main.temp_min + "°C" + "<span class=\"tab\"></span>";
-        paragraphText+= "Maximum Temperature: " + weatherData[i].main.temp_max + "°C" + "<span class=\"tab\"></span>";
-        paragraphText+= "Wind Speed: " + weatherData[i].wind.speed + "m/s";
-        paragraph.innerHTML = paragraphText;
         //push the data for every object in the arrays
         date.push(weatherData[i].dt_txt);
         temperature.push(weatherData[i].main.temp);
@@ -51,7 +45,7 @@ function createWeatherGraph(weatherData){
     showsGraphic();
 }
 
-//Make 4 array's (1 for date, 1 for temperature, 1 for min temperature, 1 for max temperature)
+//Make 4 arrays (1 for date, 1 for temperature, 1 for min temperature, 1 for max temperature)
 let date = [ ];
 let temperature = [ ];
 let minTemperature = [ ];
@@ -81,11 +75,20 @@ const config = {
     },
     options: {}
 };
+
+let myChart = new Chart(
+    document.getElementById("graphic"),
+    config
+);
+
+//Update the data
 function showsGraphic (){
-    let myChart = new Chart(
-        document.getElementById("graphic"),
-        config
-    );
+    myChart.config.data.labels = date;
+    myChart.config.data.datasets[0].data = temperature;
+    myChart.config.data.datasets[1].data = minTemperature;
+    myChart.config.data.datasets[2].data = maxTemperature;
+    //Update the graphic
+    myChart.update();
 }
 
 
