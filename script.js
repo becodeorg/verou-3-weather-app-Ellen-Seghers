@@ -21,8 +21,6 @@
         }
     }
 
-
-
 //On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days
     //loop over array and display weather for each timestamp
     function createWeatherGraph(weatherData){
@@ -46,8 +44,21 @@
             paragraphText+= "Maximum Temperature: " + weatherData[i].main.temp_max + "°C" + "<span class=\"tab\"></span>";
             paragraphText+= "Wind Speed: " + weatherData[i].wind.speed + "m/s";
             paragraph.innerHTML = paragraphText;
+            //TODO: (In for loop) push the data for every object in the arrays
+
+
         }
     }
 
+//Make 4 array's (1 for date, 1 for temperature, 1 for min temperature, 1 for max temperature)
+let date = [ ];
+let temperature = [ ];
+let minTemperature = [ ];
+let maxTemperature = [ ];
+
+
+//TODO: Make a canvas element with an id in a div (html or js)
+
+//TODO: Make a variable
 
 
