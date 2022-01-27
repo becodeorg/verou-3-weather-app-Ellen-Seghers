@@ -76,7 +76,7 @@ const config = {
     options: {
         plugins: {
             legend: {
-                position: "left"
+                position: "bottom"
             }
         }
     }

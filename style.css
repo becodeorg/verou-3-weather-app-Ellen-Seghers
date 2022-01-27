@@ -1,19 +1,16 @@
-* {
-
-}
-
 html {
     height: 100%;
 }
 
 body {
     height: 100%;
+    background-color: #F8F7F3;
 }
 
 .searchBar {
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
 }
 
 .text {
@@ -22,3 +19,32 @@ body {
     padding-top: 10px;
 }
 
+@media only screen and (min-width: 768px){
+    .graphicDiv {
+        display: flex;
+        margin-top: 40px;
+        margin: 0px auto;
+        height: 40%;
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px){
+    .graphicDiv {
+        display: flex;
+        margin-top: 40px;
+        margin: 0px auto;
+        height: 40%;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .graphicDiv {
+        display: flex;
+        margin-top: 40px;
+        margin: 0px auto;
+        height: 40%;
+        width: 100%;
+    }
+}
