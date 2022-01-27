@@ -13,5 +13,12 @@ body {
 .searchBar {
     display: flex;
     justify-content: center;
-    margin: 15px;
+    padding-bottom: 20px;
 }
+
+.text {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+

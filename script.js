@@ -73,7 +73,13 @@ const config = {
             data: maxTemperature,
         }]
     },
-    options: {}
+    options: {
+        plugins: {
+            legend: {
+                position: "left"
+            }
+        }
+    }
 };
 
 let myChart = new Chart(
