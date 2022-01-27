@@ -2,8 +2,16 @@
 
 }
 
+html {
+    height: 100%;
+}
 
-.tab {
-    display: inline-block;
-    margin-left: 40px;
+body {
+    height: 100%;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
 }

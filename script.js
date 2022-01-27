@@ -37,7 +37,7 @@ function createWeatherGraph(weatherData){
     for(let i = 0; i < weatherData.length; i++){
         console.log(weatherData[i]);
         //push the data for every object in the arrays
-        date.push(weatherData[i].dt_txt);
+        date.push(weatherData[i].dt_txt.split(":")[0]+"h");
         temperature.push(weatherData[i].main.temp);
         minTemperature.push(weatherData[i].main.temp_min);
         maxTemperature.push(weatherData[i].main.temp_max);
