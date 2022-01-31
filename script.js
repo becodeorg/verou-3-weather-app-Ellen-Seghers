@@ -28,11 +28,7 @@
  */
 //loop over array and display weather for each timestamp
 const createWeatherGraph = (weatherData) => {
-    //Clear the arrays
-    date = [];
-    temperature = [];
-    minTemperature = [];
-    maxTemperature = [];
+    resetDataArray();
     //create for loop that loops over data
     for(let i = 0; i < weatherData.length; i++){
         console.log(weatherData[i]);
@@ -46,10 +42,18 @@ const createWeatherGraph = (weatherData) => {
 }
 
 //Make 4 arrays (1 for date, 1 for temperature, 1 for min temperature, 1 for max temperature)
-let date = [ ];
-let temperature = [ ];
-let minTemperature = [ ];
-let maxTemperature = [ ];
+let date = [];
+let temperature = [];
+let minTemperature = [];
+let maxTemperature = [];
+
+//Clear the arrays
+const resetDataArray = () => {
+    date = [];
+    temperature = [];
+    minTemperature = [];
+    maxTemperature = [];
+}
 
 //Make a variable with a graph in it
 const config = {
