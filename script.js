@@ -5,15 +5,12 @@
     //Get your input field out of your html
     const inputField = document.querySelector("input");
 
-    //Add an event listener on the input
-    inputField.addEventListener("keyup", getLocationInformation);
-
     /**
      * grab the weather information, based on the location provided by the input field and display it in the html
      * @param event the key up event that was triggered
      */
     //On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days
-    function getLocationInformation(event){
+    const getLocationInformation = (event) => {
         if(event.key == "Enter"){
             console.log(inputField)
             fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + inputField.value + '&appid=' + APIKey.key + '&units=metric')
@@ -22,12 +19,15 @@
         }
     }
 
+    //Add an event listener on the input
+    inputField.addEventListener("keyup", getLocationInformation);
+
 /**
  * Grab the necessary data from the weather data object and put in arrays.
  * @param weatherData (object) Weather data from location.
  */
 //loop over array and display weather for each timestamp
-function createWeatherGraph(weatherData){
+const createWeatherGraph = (weatherData) => {
     //Clear the arrays
     date = [];
     temperature = [];
@@ -77,25 +77,27 @@ const config = {
         plugins: {
             legend: {
                 position: "bottom"
+            },
+            title: {
+                display: true,
+                text: 'Forecast 5 days: Temperature',
+                color: 'black'
             }
         }
     }
 };
 
-let myChart = new Chart(
+let temperatureChart = new Chart(
     document.getElementById("graphic"),
     config
 );
 
 //Update the data
-function showsGraphic (){
-    myChart.config.data.labels = date;
-    myChart.config.data.datasets[0].data = temperature;
-    myChart.config.data.datasets[1].data = minTemperature;
-    myChart.config.data.datasets[2].data = maxTemperature;
+const showsGraphic = () => {
+    temperatureChart.config.data.labels = date;
+    temperatureChart.config.data.datasets[0].data = temperature;
+    temperatureChart.config.data.datasets[1].data = minTemperature;
+    temperatureChart.config.data.datasets[2].data = maxTemperature;
     //Update the graphic
-    myChart.update();
+    temperatureChart.update();
 }
-
-
-
