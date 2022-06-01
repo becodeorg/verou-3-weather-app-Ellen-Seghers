@@ -22,8 +22,7 @@ body {
 @media only screen and (min-width: 768px){
     .graphicDiv {
         display: flex;
-        margin-top: 40px;
-        margin: 0px auto;
+        margin: 40px auto;
         height: 40%;
         width: 60%;
     }
@@ -32,8 +31,7 @@ body {
 @media only screen and (min-width: 480px) and (max-width: 768px){
     .graphicDiv {
         display: flex;
-        margin-top: 40px;
-        margin: 0px auto;
+        margin: 40px auto;
         height: 40%;
         width: 60%;
     }
@@ -42,8 +40,7 @@ body {
 @media only screen and (max-width: 480px){
     .graphicDiv {
         display: flex;
-        margin-top: 40px;
-        margin: 0px auto;
+        margin: 40px auto;
         height: 40%;
         width: 100%;
     }
